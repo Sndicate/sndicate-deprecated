@@ -1,0 +1,33 @@
+# Add all your ignored files here
+
+# System and IDE generated files
+.DS_Store
+.sublime-project
+.sublime-workspace
+
+# Local SQLite databases shouldn't be committed.
+*.sqlite
+*.sqlite3
+
+# Secrets should never be committed...
+snd_config.yml
+
+# Environment files
+#
+# NOTE: It is recommended that you normalize your
+# Ruby environment by using a Ruby version manager
+# such as RVM or rbenv with a clean gemset in both
+# development and production.
+#
+# However, it is each individual developer's/org's
+# responsibility to standardize on a tool for this
+# purpose. We will not force this on contributors
+# or users.
+.ruby-gemset
+.ruby-version
+.rvmrc
+
+# Ignore Bundler config. Again, this is because we
+# won't enforce a particular way of working within
+# an organization. See above.
+/.bundle

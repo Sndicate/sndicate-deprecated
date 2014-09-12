@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>{{page_title }}</title>
+
+  <meta name="description" content="{{page_description }}" />
+  <meta name="author" content="{{#author }}{{name }}{{/author }}" />
+<!-- Convention is to leave humans.txt in place to give credit to theme developers. Fee free to add your info as well -->
+  <link rel="author" href="/humans.txt" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- Place your favicon.ico and apple-touch-icon.png in the site root folder instead of referencing them here -->
+
+  <link rel="stylesheet" href="css/style.e93cb2e5.css">
+  <link href="//fonts.googleapis.com/css?family=Noto+Serif:400,700|Fira+Mono:400,700|Fira+Sans:400,300,700" rel="stylesheet" />
+
+<!-- HTML5 SHIV & RESPOND.JS FOR HTML5 + MEDIA QUERY SUPPORT IN IE6-8 -->
+  <!--[if lt IE 9]>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv-printshiv.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+</head>
+<body>
+
+  <header class="container">
+    <div class="row">
+      <nav class="col-12">
+        {{#has_pages}}
+          <ul>
+            <li><h1 class="logo"><a href="/">{{site_title}}</a></h1></li>
+            {{#pages}}
+              <li><a href="/{{slug}}">{{title}}</a></li>
+            {{/pages}}
+          </ul>
+        {{/has_pages}}
+        <ul>
+          <li><a href="/atom.xml"><i class="fa fa-rss"></i></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+
+  
+
+<!-- This will be uncommented at build time -->
+  
+    {{{yield}}}
+  
+
+  <footer class="container">
+    <section class="row">
+      <div class="col-6">
+        <p class="hug">
+          <small><strong>{{ site_title }}</strong> &copy; {{ copyright }}</small>
+        </p>
+      </div>
+      <div class="col-6">
+        {{#has_pages}}
+          <ul>
+            {{#pages}}
+              <li><a href="/{{slug}}">{{title}}</a></li>
+            {{/pages}}
+          </ul>
+        {{/has_pages}}
+      </div>
+    </section>
+  </footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  
+  
+
+  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+  <script>
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+    function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+    e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+    e.src='//www.google-analytics.com/analytics.js';
+    r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','{{ga_site_id}}','auto');ga('send','pageview');
+  </script>
+</body>
+</html>

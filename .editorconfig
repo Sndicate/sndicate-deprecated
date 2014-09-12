@@ -1,0 +1,46 @@
+# Sndicate Global Editor Config
+#
+# This file helps maintain our formal
+# coding styles between contributors.
+#
+# Check out http://EditorConfig.org
+# for more about the format. It's cool.
+
+root = true
+
+# Global settings
+# Unix-style newlines with a newline ending every file
+[*]
+end_of_line = lf
+insert_final_newline = true
+
+# Server-side preferences
+# We generally use 2-space indents everywhere
+[*.rb]
+indent_style = space
+indent_size = 2
+
+[*.rake]
+indent_style = space
+indent_size = 2
+
+[config.ru]
+indent_style = space
+indent_size = 2
+
+[*.yml]
+indent_style = space
+indent_size = 4
+
+# Font-end preferences
+[*.js]
+indent_style = space
+indent_size = 2
+
+[*.html]
+indent_style = space
+indent_size = 2
+
+[*.erb]
+indent_style = space
+indent_size = 2

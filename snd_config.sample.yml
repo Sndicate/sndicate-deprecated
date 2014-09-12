@@ -1,0 +1,41 @@
+# Sndicate Configuration
+#
+# This file is split up into three sections - development, test, and
+# production - so the application knows how to behave automatically
+# based on its environment.
+#
+# For custom configuration options simply add a key in the proper
+# environment. Once added you can access the key in any Sndicate
+# controller, model, library, or view with `SndConfig.my_custom_option`
+
+general: &general
+    key: Some value # A test key/value pair
+    posts_per_page: 10
+    # Allow anyone to register and post right away. False by default.
+    auto_approve_users: false
+    disqus_username: CHANGEME
+    # Change to your Google Analytics site ID which looks like 'UA-XXXXX-X'
+    google_analytics_id: UA-XXXXX-X
+    # This controls the <meta name="author" /> tag
+    default_author_name: Your Name Here
+
+development:
+    <<: *general
+    database:
+        adapter: sqlite
+        name: sndicate.sqlite
+
+test:
+    <<: *general
+    database:
+        adapter: sqlite
+        name: sndicate.sqlite
+
+production:
+    <<: *general
+    database:
+        adapter: mysql
+        name: CHANGEME
+        user: CHANGEME
+        password: CHANGEME
+        host: CHANGEME
