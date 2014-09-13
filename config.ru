@@ -6,6 +6,7 @@ ENV['RACK_ENV'] ||= 'development'
 
 require 'bundler'
 Bundler.require :default, ENV['RACK_ENV'].to_sym
+require File.dirname(__FILE__) + '/core/sndicate'
 
 # require 'bundler'
 # Bundler.require
@@ -14,8 +15,9 @@ Bundler.require :default, ENV['RACK_ENV'].to_sym
 # require 'bundler/setup'
 # Bundler.require(:environment_name)
 
+# FIXME: Get rid of the use of this Constant
 SndRoot = File.dirname(__FILE__) # TODO: Look into using File.expand_path instead
-require './core/sndicate'
+
 
 # # Load up the database
 # if ['development', 'test'].include? ENV['RACK_ENV']

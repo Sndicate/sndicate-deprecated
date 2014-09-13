@@ -1,4 +1,4 @@
-require 'sequel'
+require 'sequel' # TODO: Do I need to require gems after calling Bundler.require?
 
 # Load up the database
 if ['development', 'test'].include? ENV['RACK_ENV']
