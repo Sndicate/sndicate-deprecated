@@ -56,7 +56,7 @@ namespace :dev do
         contents.each_line.detect do |line|
           lines_searched += 1.0
           line_number += 1
-          if line.include?("TODO:") || line.include?("FIXME:") # || line.include?("NOTE:") || line.include?("IMPORTANT:")
+          if line.include?("TODO:") || line.include?("FIXME:") || line.include?("NOTE:") || line.include?("IMPORTANT:")
             puts "[File: #{file.colorize(:blue)}]: [L:#{line_number.to_s.colorize(:red)}]"
             puts "#{line.lstrip}\n"
             todos_found += 1.0
