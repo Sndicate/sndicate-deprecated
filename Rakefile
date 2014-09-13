@@ -2,13 +2,12 @@ require 'sequel'
 require 'colorize'
 
 desc "Load specific environment or development by default"
-task :environment, [:env] do |t, args|
+task :environment do
   require 'yaml'
   require 'ostruct'
 
   # Default to development if no env is specified
-  args.env ||= 'development'
-  ENV['RACK_ENV'] = args.env
+  ENV['RACK_ENV'] ||= 'development'
 
   full_config = YAML.load_file("#{Dir.pwd}/snd_config.yml") || {}
   env_config = full_config[ENV['RACK_ENV']] || {}
@@ -17,17 +16,19 @@ end
 
 namespace :db do
   desc "Create the database"
-  task :create, [:environment] => [:environment] do |t, args|
+  task :create => [:environment] do
     require './setup/database'
     database = Database.new(ENV['RACK_ENV'])
     database.create
   end
 
   desc "Drop the database for specified environment"
-  task :drop, [:environment] => [:environment] do |t, args|
-    if ['development', 'test'].include? ENV['RACK_ENV']
-      `rm ./sndicate.sqlite`
-      puts "#{args.environment.capitalize} database dropped."
+  task :drop => [:environment] do
+    if ['development', 'test'].include? ENV['RACK_ENV'].to_s
+      if File.exist?("./#{SndConfig.database['name']}")
+        FileUtils.rm("./#{SndConfig.database['name']}")
+      end
+      puts "#{ENV['RACK_ENV'].capitalize} database dropped."
     else
       require './setup/database'
       database = Database.new(ENV['RACK_ENV'])
@@ -36,7 +37,7 @@ namespace :db do
   end
 
   desc "Drop and recreate database for the specified environment"
-  task :reset, [:environment] => [:drop, :create] do |t, args|
+  task :reset => [:drop, :create] do |t, args|
     puts "Database recreated."
   end
 end
