@@ -1,7 +1,8 @@
+# IMPORTANT: Why is this file here? Config.ru seems to be better for this.
 # TODO: Remove this line require 'sinatra/base'
 require 'yaml'
 require 'ostruct'
-
+# NOTE: This needs to go away
 sndicate = {
   env: ENV['RACK_ENV']
 }

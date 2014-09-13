@@ -53,21 +53,35 @@ namespace :dev do
       files_searched += 1
       File.open(file) do |contents|
         line_number = 0
-        contents.each_line.detect do |line|
+        contents.each_line do |line|
           lines_searched += 1.0
           line_number += 1
-          if line.include?("TODO:") || line.include?("FIXME:") || line.include?("NOTE:") || line.include?("IMPORTANT:")
-            puts "[File: #{file.colorize(:blue)}]: [L:#{line_number.to_s.colorize(:red)}]"
-            puts "#{line.lstrip}\n"
-            todos_found += 1.0
+          # ["TODO:", "FIXME:", "NOTE:", "IMPORTANT:"].each do |warning|
+          #   puts "Checking #{warning} in #{file}"
+          #   if line.include? warning
+          #     puts "[L:#{line_number.to_s}] in [#{file}]".colorize(:blue).underline
+          #     puts line.lstrip + "\n"
+          #     todos_found += 1
+          #   end
+          # end
+          unless %w{TODO: FIXME: NOTE: IMPORTANT:}.none? { |warning| line.include? warning }
+            puts "[L:#{line_number.to_s}] in [#{file}]".colorize(:blue).underline
+            puts line.lstrip + "\n"
+            todos_found += 1
           end
+
+          # if line.include?("TODO:") || line.include?("FIXME:") || line.include?("NOTE:") || line.include?("IMPORTANT:")
+          #   puts "[File: #{file.colorize(:blue)}]: [L:#{line_number.to_s.colorize(:red)}]"
+          #   puts "#{line.lstrip}\n"
+          #   todos_found += 1.0
+          # end
         end
       end
     end
 
     if todos_found >= 1
       puts "Found #{todos_found.to_s.colorize(:red)} in #{files_searched.to_s.colorize(:blue)} files."
-      percentage = (todos_found / lines_searched) * 100
+      percentage = (todos_found / files_searched) * 100
       puts "Overall todo score is #{percentage}%".colorize(:red)
     else
       puts "All systems are go. No todos found.".colorize(:green)

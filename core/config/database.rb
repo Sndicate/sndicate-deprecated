@@ -1,5 +1,7 @@
 require 'sequel' # TODO: Do I need to require gems after calling Bundler.require?
 
+# FIXME: What's up?
+
 # Load up the database
 if ['development', 'test'].include? ENV['RACK_ENV']
   DB = Sequel.sqlite(SndConfig.database['name'])
