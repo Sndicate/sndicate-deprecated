@@ -3,8 +3,12 @@ class PostsController < ApplicationController
     "P Controller"
   end
 
-  get '/new' do
-    Post.create(title: 'My first post', content: 'This is the content...', slug: 'my-first-post', published_on: Time.now)
+  get '/new/?' do
+    Post.create(title: 'Another post', content: 'This is the content...', slug: 'my-new-post', published_on: Time.now, status: 'published', author_id: 1)
     "We made it!"
+  end
+
+  get '/*' do
+    "This actually worked."
   end
 end

@@ -1,4 +1,4 @@
-require 'bcrypt'
+require 'bcrypt' # TODO: Does this line need to be here since we use Bundler.require?
 require 'sinatra/json'
 require 'sinatra/cookies'
 require 'mustache/sinatra'
@@ -7,12 +7,12 @@ require 'mustache/sinatra'
 # require 'sinatra/contact'
 # require 'sinatra/flash'
 # require 'asset-handler'
- 
+
 class ApplicationController < Sinatra::Base
   register Mustache::Sinatra
   require './core/views/layout' # Loads the default layout
 
-  enable :sessions
+  enable :sessions, :logging
 
   set :public_folder, "#{SndRoot}/public"
   set :views, "#{SndRoot}/core/views"
@@ -40,13 +40,19 @@ class ApplicationController < Sinatra::Base
     end
   end
 
-  get '/:something/?' do |s|
+  get '/*/?' do |s|
     pass unless ['hi', 'something', 'whatever'].include? s
-    #{}"Lookup worked! (Your string is '#{s}')"
-    mustache :index, layout: :layout
+    "Lookup worked! (Your string is '#{s}')"
+    #mustache :index, layout: :layout
   end
   
   get '/' do
-    "App ctrl #{SndConfig.key} and #{SndRoot}"
+    @posts = Post.all
+    mustache :index, posts: @posts
   end
+
+  # TODO: Implement not_found
+  # not_found do
+  #   "Raise exception or show 404 page here"
+  # end
 end

@@ -5,10 +5,10 @@
     <section class="col-8">
       {{#posts}}
         <article class="entry">
-          <a href="{{ slug }}"><h2>{{ title }}</h2></a>
+          <a href="{{slug}}"><h2>{{title}}</h2></a>
           <time datetime="{{published_on}}">First published {{published_on}}.</time> {{#last_updated}}<time datetime="{{last_updated}}">Updated {{last_updated}}</time>{{/last_updated}}
-          {{{ excerpt }}}
-          <a class="button" href="{{ slug }}">Full Article &raquo;</a>
+          {{{content}}}
+          <a class="button" href="{{slug}}">Full Article &raquo;</a>
         </article>
       {{/posts}}
     </section>
@@ -24,7 +24,7 @@
           <h3>Categories</h3>
           <ul>
             {{#categories}}
-              <li><a href="/category/{{ id }}">{{ name }}</a></li>
+              <li><a href="/category/{{id}}">{{name}}</a></li>
             {{/categories}}
           </ul>
         </div>
