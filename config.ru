@@ -1,33 +1,13 @@
-# Rackup file
-#
-# We load our environment and dependencies and start
-# the application here.
+# This file gets our app running on Rack.
 ENV['RACK_ENV'] ||= 'development'
+SndRoot = File.dirname(__FILE__)
 
-require 'bundler'
-Bundler.require :default, ENV['RACK_ENV'].to_sym
-require File.dirname(__FILE__) + '/core/sndicate'
+# This bootstraps the application
+require './core/sndicate'
 
-# require 'bundler'
-# Bundler.require
-
-# TODO: Look into the following way of setting up requires
-# require 'bundler/setup'
-# Bundler.require(:environment_name)
-
-# FIXME: Get rid of the use of this Constant
-SndRoot = File.dirname(__FILE__) # TODO: Look into using File.expand_path instead
-
-
-# # Load up the database
-# if ['development', 'test'].include? ENV['RACK_ENV']
-#   DB = Sequel.sqlite(SndConfig.database['name'])
-# else
-#   # DB = Sequel.sqlite(SndConfig.database['name'])
-#   # FIXME: Production database needs setting up
-#   puts "We need to set up a production ready database"
-# end
-
+##
+# Everything below this line tells Rack how to route requests.
+#
 Dir.glob('./core/{models,lib}/*.rb') { |file| require file }
 
 Dir.glob('./core/controllers/*.rb').each do |file|

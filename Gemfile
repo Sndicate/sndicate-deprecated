@@ -19,6 +19,9 @@ gem 'sqlite3', '~> 1.3.9'
 # We can require Active Support methods for help with strings, etc.
 gem 'activesupport', '~> 4.1.5'
 
+# Auto Excerpt intelligently creates posts excerpts avoiding common issues
+gem 'auto_excerpt', '~> 0.7.1'
+
 # All passwords are hashed with Bcrypt
 gem 'bcrypt', '~> 3.1.7'
 
@@ -31,6 +34,7 @@ group :development do
   gem 'rerun', '~> 0.10.0'
   gem 'yard', '~> 0.8.7.4'
   gem 'colorize', '~> 0.7.3'
+  gem 'rack-bug', '~> 0.3.0', require: 'rack/bug'
 end
 
 # Production-only gems
@@ -40,5 +44,6 @@ end
 
 # Gems for testing
 group :test do
-  # Test stuff
+  gem 'rspec', '~> 3.1.0'
+  gem 'rack-test', '~> 0.6.2'
 end
