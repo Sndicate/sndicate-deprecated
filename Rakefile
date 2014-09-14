@@ -42,6 +42,9 @@ namespace :db do
   end
 end
 
+# Development tasks
+# These are helpful when contributing to the codebase
+# or digging into the codebase for any reason.
 namespace :dev do
   desc "Find TODOs and FIXMEs in code"
   task :todos do
@@ -56,33 +59,19 @@ namespace :dev do
         contents.each_line do |line|
           lines_searched += 1.0
           line_number += 1
-          # ["TODO:", "FIXME:", "NOTE:", "IMPORTANT:"].each do |warning|
-          #   puts "Checking #{warning} in #{file}"
-          #   if line.include? warning
-          #     puts "[L:#{line_number.to_s}] in [#{file}]".colorize(:blue).underline
-          #     puts line.lstrip + "\n"
-          #     todos_found += 1
-          #   end
-          # end
           unless %w{TODO: FIXME: NOTE: IMPORTANT:}.none? { |warning| line.include? warning }
-            puts "[L:#{line_number.to_s}] in [#{file}]".colorize(:blue).underline
+            puts "[L:#{line_number.to_s}] in #{file}".colorize(:blue).underline
             puts line.lstrip + "\n"
             todos_found += 1
           end
-
-          # if line.include?("TODO:") || line.include?("FIXME:") || line.include?("NOTE:") || line.include?("IMPORTANT:")
-          #   puts "[File: #{file.colorize(:blue)}]: [L:#{line_number.to_s.colorize(:red)}]"
-          #   puts "#{line.lstrip}\n"
-          #   todos_found += 1.0
-          # end
         end
       end
     end
 
     if todos_found >= 1
-      puts "Found #{todos_found.to_s.colorize(:red)} in #{files_searched.to_s.colorize(:blue)} files."
+      puts "Found #{todos_found} in #{files_searched} files.".colorize(:blue)
       percentage = (todos_found / files_searched) * 100
-      puts "Overall todo score is #{percentage}%".colorize(:red)
+      puts "Overall todo score is #{percentage.round(2)}.%".colorize(:blue)
     else
       puts "All systems are go. No todos found.".colorize(:green)
     end

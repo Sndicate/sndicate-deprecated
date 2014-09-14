@@ -1,3 +1,3 @@
-class Post < Sequel::Model
-  # Post model
+class Post < Sequel::Model(:posts)
+  one_to_one :author
 end

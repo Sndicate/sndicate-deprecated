@@ -1,6 +1,6 @@
 require 'sequel' # TODO: Do I need to require gems after calling Bundler.require?
 
-# FIXME: What's up?
+Sequel::Model.plugin(:schema)
 
 # Load up the database
 if ['development', 'test'].include? ENV['RACK_ENV']
