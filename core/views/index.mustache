@@ -7,7 +7,9 @@
         <article class="entry">
           <a href="{{slug}}"><h2>{{title}}</h2></a>
           <time datetime="{{published_on}}">First published {{published_on}}.</time> {{#last_updated}}<time datetime="{{last_updated}}">Updated {{last_updated}}</time>{{/last_updated}}
-          {{{content}}}
+          <p>
+            {{{content}}}
+          </p>
           <a class="button" href="{{slug}}">Full Article &raquo;</a>
         </article>
       {{/posts}}

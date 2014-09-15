@@ -1,11 +1,8 @@
-# Index View
-#
-# This is the blog homepage view. It
-# contains methods that output a list
-# of posts and other data for the view.
+# /core/views/index.rb
+# Methods to populate default index page templates.
 class Index < Layout
   def posts
-    unless @posts.nil?
+    unless @posts.empty?
       @posts.map do |post|
         {
           id: post.id,
@@ -18,13 +15,11 @@ class Index < Layout
           excerpt: excerpt(post.content)
         }
       end
-    else
-      @no_posts = true
     end
   end
 
   def author
-    unless @author.nil?
+    unless @author.empty?
       @author.map do |author|
         {
           bio: author.bio,
@@ -34,14 +29,17 @@ class Index < Layout
     end
   end
 
+  # Has categories?
+  #
+  # Checks to see if any categories exist in our database. 
+  # If the @categories object is empty return false, else
+  # return true.
   def has_categories
-    unless @categories.nil?
-      true
-    end
+    @categories.empty? ? false : true
   end
 
   def categories
-    [{name: 'Sunshine', id: 1}, {name: 'Vacations', id: 2}, {name: 'Unicorns', id: 3}, {name: 'Bullshit', id: 4}]
+    @categories.map { |category| { id: category.id, name: category.name } }
   end
 
   def pagination
