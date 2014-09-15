@@ -13,3 +13,7 @@ Sndicate is a publishing engine (blog/CMS) built on the concepts set forth in th
 ## Contributing
 
 ## Docs and info
+
+## License
+
+MIT. See [License](License) file.
