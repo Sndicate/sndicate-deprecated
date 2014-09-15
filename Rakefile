@@ -43,6 +43,7 @@ namespace :db do
 end
 
 # Development tasks
+#
 # These are helpful when contributing to the codebase
 # or digging into the codebase for any reason.
 namespace :dev do
@@ -75,5 +76,10 @@ namespace :dev do
     else
       puts "All systems are go. No todos found.".colorize(:green)
     end
+  end
+
+  desc "Run a dev server"
+  task :server do
+    system "rerun 'rackup'"
   end
 end
