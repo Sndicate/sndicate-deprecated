@@ -71,7 +71,7 @@ namespace :dev do
     if todos_found >= 1
       puts "Found #{todos_found} in #{files_searched} files.".colorize(:blue)
       percentage = (todos_found / files_searched) * 100
-      puts "Overall todo score is #{percentage.round(2)}.%".colorize(:blue)
+      puts "Todo score is #{percentage.round(2)}.% (Lower numbers are better)".colorize(:blue)
     else
       puts "All systems are go. No todos found.".colorize(:green)
     end

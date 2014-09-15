@@ -47,7 +47,10 @@ class ApplicationController < Sinatra::Base
   end
   
   get '/' do
-    @posts = Post.all
+    # TODO: Find a way to return all repeated queries at once (before filter?)
+    @posts = Post.all # TODO: Limit and paginate
+    @author = Author.where(role: 'owner')
+    @categories = Category.all # TODO: Does this need a limit?
     mustache :index, posts: @posts
   end
 
