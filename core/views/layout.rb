@@ -5,23 +5,19 @@
 # from the layout they should use.
 class Layout < Mustache
   def site_title
-    'Site Title'
+    SndConfig.site_title
   end
 
   def page_title
-    @title || 'Default page title'
+    @title ||= "#{SndConfig.site_title} | #{SndConfig.site_summary}"
   end
 
   def page_description
-    'Default page description'
+    @description ||= SndConfig.site_description
   end
 
   def author
-    if @post
-      @post.author || SndConfig.default_author_name
-    else
-      SndConfig.default_author_name
-    end
+    @post.author || SndConfig.default_author_name
   end
 
   def has_pages
@@ -29,16 +25,7 @@ class Layout < Mustache
   end
 
   def pages
-    [
-    {
-      title: 'Page One',
-      slug: 'page-one'
-    },
-    {
-      title: 'Another Page',
-      slug: 'another-page'
-    }
-  ]
+    @pages.map { |page| { title: page.title, slug: page.slug } }
   end
 
   def copyright

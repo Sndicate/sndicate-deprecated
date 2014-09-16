@@ -9,7 +9,8 @@
 *.sqlite
 *.sqlite3
 
-# Secrets should never be committed...
+# The config file is created during the install
+# process and should not be committed in development.
 snd_config.yml
 
 # Environment files

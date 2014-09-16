@@ -42,6 +42,7 @@ class Index < Layout
     @categories.map { |category| { id: category.id, name: category.name } }
   end
 
+  # TODO: Implement pagination
   def pagination
     {
       prev_page: false,
