@@ -26,7 +26,6 @@ class ApplicationController < Sinatra::Base
   helpers Sinatra::JSON, Sinatra::Cookies
 
   # GET /snd-setup
-  #
   # Registers first user. Only
   # available if no authors exist.
   get '/snd-setup/?' do
@@ -41,9 +40,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/*/?' do |s|
-    pass unless ['hi', 'something', 'whatever'].include? s
-    "Lookup worked! (Your string is '#{s}')"
-    #mustache :index, layout: :layout
+    # TODO: Decide whether we want to prefix posts path
   end
   
   get '/' do
@@ -51,7 +48,8 @@ class ApplicationController < Sinatra::Base
     @posts = Post.all # TODO: Limit and paginate
     @author = Author.where(role: 'owner')
     @categories = Category.all # TODO: Does this need a limit?
-    mustache :index, posts: @posts
+    @pages = Page.all
+    mustache :index
   end
 
   # TODO: Implement not_found
