@@ -23,7 +23,8 @@ class Database
       String :email, unique: true
       String :display_name, null: true
       String :bio, text: true
-      String :role, text: true
+      String :role
+      TrueClass :active, default: false
       DateTime :created_at
     end
 
