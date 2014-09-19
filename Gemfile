@@ -25,6 +25,9 @@ gem 'auto_excerpt', '~> 0.7.1'
 # All passwords are hashed with Bcrypt
 gem 'bcrypt', '~> 3.1.7'
 
+# For session security
+gem 'rack_csrf', '~> 2.5.0'
+
 # We use Mustache templates for most views
 gem 'mustache', '~> 0.99.6'
 
