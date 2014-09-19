@@ -13,11 +13,10 @@ class ApplicationController < Sinatra::Base
   require './core/views/layout' # Loads the default layout
 
   enable :sessions, :logging
+  use Rack::Csrf, raise: true
 
   set :public_folder, "#{SndRoot}/public"
   set :views, "#{SndRoot}/core/views"
-
-  # Mustache templates setup
   set :mustache, {
     views: "#{SndRoot}/core/views",
     templates: "#{SndRoot}/core/views"
@@ -25,18 +24,15 @@ class ApplicationController < Sinatra::Base
 
   helpers Sinatra::JSON, Sinatra::Cookies
 
+  before '/snd-setup/?' do
+    halt 401, redirect '/error/401.html' if Author.count > 0
+    session[:setup] = true
+  end
+
   # GET /snd-setup
-  # Registers first user. Only
-  # available if no authors exist.
+  # Display form to register site owner
   get '/snd-setup/?' do
-    if Author.count > 1
-      "Nope. We already have authors here."
-    elsif Author.count < 1
-      #"We can now setup"
-      mustache :setup, layout: :setup_layout
-    else
-      "Somehow we ended up in a weird place..."
-    end
+    mustache :setup, layout: :setup_layout
   end
 
   get '/*/?' do |s|
@@ -45,6 +41,7 @@ class ApplicationController < Sinatra::Base
   
   get '/' do
     # TODO: Find a way to return all repeated queries at once (before filter?)
+    # NOTE: This can be solved with a filter OR a private method - depends on how many routes use it
     @posts = Post.all # TODO: Limit and paginate
     @author = Author.where(role: 'owner')
     @categories = Category.all # TODO: Does this need a limit?
@@ -52,8 +49,8 @@ class ApplicationController < Sinatra::Base
     mustache :index
   end
 
-  # TODO: Implement not_found
-  # not_found do
-  #   "Raise exception or show 404 page here"
-  # end
+  # TODO: Think about whether this is the best way to handle 404s
+  not_found do
+    redirect '/error/404.html'
+  end
 end
