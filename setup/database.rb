@@ -52,6 +52,19 @@ class Database
       String :content, text: true
       String :slug, unique: true
     end
+
+    @db.create_table?(:subscribers) do
+      primary_key :id
+      String :status
+      # TODO: Finish this one
+    end
+
+    @db.create_table?(:subscriptions) do
+      primary_key :id
+      TrueClass :active, default: false
+      String :host, unique: true
+      String :label
+    end
   end
 
   def drop
