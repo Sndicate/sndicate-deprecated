@@ -1,3 +1,4 @@
+require 'rspec/core/rake_task'
 require 'sequel'
 require 'colorize'
 
@@ -83,3 +84,10 @@ namespace :dev do
     system "rerun 'rackup'"
   end
 end
+
+# Test the app
+RSpec::Core::RakeTask.new(:spec) do |task|
+  task.rspec_opts = ['--color', '--format progress', '--format Nc']
+end
+
+task :default => :spec

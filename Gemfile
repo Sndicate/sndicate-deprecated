@@ -26,7 +26,7 @@ gem 'auto_excerpt', '~> 0.7.1'
 gem 'bcrypt', '~> 3.1.7'
 
 # For session security
-gem 'rack_csrf', '~> 2.5.0'
+gem 'rack_csrf', '~> 2.5.0', require: 'rack/csrf'
 
 # We use Mustache templates for most views
 gem 'mustache', '~> 0.99.6'
@@ -48,5 +48,8 @@ end
 # Gems for testing
 group :test do
   gem 'rspec', '~> 3.1.0'
+  gem 'rspec-nc', '~> 0.2.0'
+  gem 'guard', '~> 2.6.1'
+  gem 'guard-rspec', '~> 4.3.1'
   gem 'rack-test', '~> 0.6.2'
 end
