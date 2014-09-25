@@ -27,6 +27,7 @@ snd_config.yml
 .ruby-gemset
 .ruby-version
 .rvmrc
+Guardfile
 
 # Ignore Bundler config. Again, this is because we
 # won't enforce a particular way of working within
