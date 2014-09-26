@@ -8,7 +8,7 @@ class PostsController < ApplicationController
 
   # POST /posts/create
   # Publish new post
-  post '/create/?'
+  post '/create/?' do
     #
   end
 
@@ -33,6 +33,6 @@ class PostsController < ApplicationController
   # GET /posts/
   # Show all posts
   get '/?' do
-    "Posts controller."
+    'Posts controller'
   end
 end

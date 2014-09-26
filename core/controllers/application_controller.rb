@@ -34,9 +34,9 @@ class ApplicationController < Sinatra::Base
     mustache :setup, layout: :setup_layout
   end
 
-  get '/*/?' do |s|
-    # TODO: Decide whether we want to prefix posts path
-  end
+  # get '/*/?' do |s|
+  #   # TODO: Decide whether we want to prefix posts path
+  # end
   
   get '/' do
     # TODO: Find a way to return all repeated queries at once (before filter?)
