@@ -94,7 +94,7 @@ end
 
 # Test the app
 RSpec::Core::RakeTask.new(:spec) do |task|
-  task.rspec_opts = ['--color', '--format progress', '--format Nc']
+  task.rspec_opts = ['--color', '--format progress']
 end
 
 task :default => :spec
