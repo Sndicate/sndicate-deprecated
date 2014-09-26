@@ -1,4 +1,4 @@
-# Sndicate
+# Sndicate [![Build Status](https://travis-ci.org/Sndicate/sndicate.svg?branch=master)](https://travis-ci.org/Sndicate/sndicate)
 
 > If you only blog then it's only a blog... Be an author. Run a syndication hub. Do both with Sndicate.
 

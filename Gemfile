@@ -47,6 +47,7 @@ end
 
 # Gems for testing
 group :test do
+  gem 'rake'
   gem 'rspec', '~> 3.1.0'
   gem 'rspec-nc', '~> 0.2.0'
   gem 'guard', '~> 2.6.1'
