@@ -83,6 +83,13 @@ namespace :dev do
   task :server do
     system "rerun 'rackup'"
   end
+
+  desc "Install developer tools useful for contributors and the core team"
+  task :setup do
+    if File.directory('.git')?
+      # TODO: Finish me
+    end
+  end
 end
 
 # Test the app
