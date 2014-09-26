@@ -86,8 +86,8 @@ namespace :dev do
 
   desc "Install developer tools useful for contributors and the core team"
   task :setup do
-    if File.directory('.git')?
-      # TODO: Finish me
+    if File.directory?('.git')
+      puts 'It exists!'
     end
   end
 end
