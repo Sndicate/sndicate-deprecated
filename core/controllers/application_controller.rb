@@ -2,7 +2,6 @@ require 'bcrypt' # TODO: Does this line need to be here since we use Bundler.req
 require 'sinatra/json'
 require 'sinatra/cookies'
 require 'mustache/sinatra'
-# require 'sinatra/base'
 # require 'sinatra/auth'
 # require 'sinatra/contact'
 # require 'sinatra/flash'
@@ -25,7 +24,7 @@ class ApplicationController < Sinatra::Base
   helpers Sinatra::JSON, Sinatra::Cookies
 
   before '/snd-setup/?' do
-    halt 401, redirect '/error/401.html' if Author.count > 0
+    halt 401, redirect('/error/401.html') if Author.count > 0
     session[:setup] = true
   end
 
