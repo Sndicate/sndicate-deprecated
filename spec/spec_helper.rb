@@ -1,7 +1,7 @@
 require 'rack/test'
 #require 'sinatra/base'
 
-ENV['RACK_ENV'] = 'test'
+ENV['RACK_ENV'] ||= 'test'
 SndRoot = File.expand_path('../..', __FILE__)
 
 require File.expand_path('../../core/sndicate.rb', __FILE__)
