@@ -8,8 +8,10 @@ Bundler.require :default, ENV['RACK_ENV'].to_sym
 # require 'rack/bug/panels/mustache_panel'
 # use Rack::Bug::MustachePanel
 
+config_file = (ENV['RACK_ENV'] == 'test') ? 'snd_config.sample.yml' : 'snd_config.yml'
+
 # Load configuration from file
-full_config = YAML.load_file("./snd_config.yml") || {}
+full_config = YAML.load_file("./#{config_file}") || {}
 env_config  = full_config[ENV['RACK_ENV']] || {}
 SndConfig   = OpenStruct.new(env_config)
 
