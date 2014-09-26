@@ -11,7 +11,7 @@ Sndicate is a publishing engine (blog/CMS) built on the concepts set forth in th
 ### Requirements
 
 * __All Environments__
-  - Ruby 1.9.3+ w/Rubygems
+  - Ruby 1.9.3+
   - Unix-like OS (not tested on Windows though it could work there too)
 * __Development__
 * __Production__
