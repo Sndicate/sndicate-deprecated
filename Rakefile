@@ -91,9 +91,10 @@ namespace :dev do
     end
   end
 
-  desc "Install built dashboard"
+  desc "Install built submodule"
   task :build, [:subject, :skip_build] do
     # Build and install dashboard or theme
+    #
     # :subject refers to what is built, :skip_build
     # refers to the option to skip the build step and
     # only install.

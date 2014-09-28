@@ -7,7 +7,8 @@ require 'sequel'
 class Database
   def initialize(env)
     puts "Current environment is #{env}"
-    if env == 'development'
+    # FIXME: Create proper test environment
+    if env == 'development' || env == 'test'
       @db = Sequel.sqlite(SndConfig.database['name'])
     else
       @db = Sequel.connect(adapter: SndConfig.database['adapter'], user: SndConfig.database['user'], host: SndConfig.database['host'], database: SndConfig.database['name'], password: SndConfig.database['password'])
@@ -53,18 +54,18 @@ class Database
       String :slug, unique: true
     end
 
-    @db.create_table?(:subscribers) do
-      primary_key :id
-      String :status
-      # TODO: Finish this one
-    end
+    # @db.create_table?(:subscribers) do
+    #   primary_key :id
+    #   String :status
+    #   # TODO: Finish this one
+    # end
 
-    @db.create_table?(:subscriptions) do
-      primary_key :id
-      TrueClass :active, default: false
-      String :host, unique: true
-      String :label
-    end
+    # @db.create_table?(:subscriptions) do
+    #   primary_key :id
+    #   TrueClass :active, default: false
+    #   String :host, unique: true
+    #   String :label
+    # end
   end
 
   def drop
