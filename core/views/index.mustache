@@ -4,6 +4,7 @@
   <div class="row">
     <section class="col-8">
       {{#posts}}
+      {{#.}}
         <article class="entry">
           <a href="{{slug}}"><h2>{{title}}</h2></a>
           <time datetime="{{published_on}}">First published {{published_on}}.</time> {{#last_updated}}<time datetime="{{last_updated}}">Updated {{last_updated}}</time>{{/last_updated}}
@@ -12,13 +13,14 @@
           </p>
           <a class="button" href="{{slug}}">Full Article &raquo;</a>
         </article>
+        {{/.}}
       {{/posts}}
     </section>
     <aside class="col-4">
       {{#author}}
         <div class="sidebar">
           <h3>About this site</h3>
-          <p>{{ bio }}</p>
+          <p>{{bio}}</p>
         </div>
       {{/author}}
       {{#has_categories}}

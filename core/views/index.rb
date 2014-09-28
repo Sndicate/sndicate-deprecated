@@ -2,6 +2,7 @@
 # Methods to populate default index page templates.
 class Index < Layout
   def posts
+    # NOTE: Find better way to do this or make reuseable
     unless @posts.empty?
       @posts.map do |post|
         {
@@ -19,14 +20,15 @@ class Index < Layout
   end
 
   def author
-    unless @author.empty?
-      @author.map do |author|
-        {
-          bio: author.bio,
-          name: preferred_name(author.username, author.display_name)
-        }
-      end
-    end
+    # unless @author.empty?
+    #   @author.map do |author|
+    #     {
+    #       bio: author.bio,
+    #       name: preferred_name(author.username, author.display_name)
+    #     }
+    #   end
+    # end
+    @author.values
   end
 
   # Has categories?
