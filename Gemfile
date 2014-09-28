@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 # Cookies and to have some more options available just in case.
 gem 'sinatra', '~> 1.4.5', require: 'sinatra/base'
 gem 'sinatra-contrib', '~> 1.4.2'
+gem 'sinatra-flash', '~> 0.3.0', require: 'sinatra/flash'
 
 # JSON gem makes Sinatra::JSON serve better JSON
 gem 'json', '~> 1.8.1'
