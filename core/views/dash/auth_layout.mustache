@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>{{page_name}}Sndicate Dashboard</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- TODO: Add restricted pages to robots.txt and add noindex meta -->
+
+<!-- Place your favicon.ico and apple-touch-icon.png in the site root folder instead of referencing them here -->
+
+  <link rel="stylesheet" href="dash/css/dash.37629d55.css">
+  <link href="//fonts.googleapis.com/css?family=Noto+Serif:400,700|Fira+Mono:400,700|Fira+Sans:400,300,700" rel="stylesheet" />
+
+<!-- HTML5 SHIV & RESPOND.JS FOR HTML5 + MEDIA QUERY SUPPORT IN IE6-8 -->
+  <!--[if lt IE 9]>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv-printshiv.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+</head>
+<body>
+
+  <div class="container">
+  <div class="row">
+    <div class="col-12 centered-content">
+      <img src="dash/img/home_logo.6aa634d4.png" />
+    </div>
+  </div>
+
+  
+
+<!-- This will be uncommented at build time -->
+  
+    {{{ yield }}}
+  
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="dash/js/auth.e64e6de2.js"></script>
+  
+  
+
+  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+  <script>
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+    function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+    e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+    e.src='//www.google-analytics.com/analytics.js';
+    r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','{{ga_site_id}}','auto');ga('send','pageview');
+  </script>
+</body>
+</html>

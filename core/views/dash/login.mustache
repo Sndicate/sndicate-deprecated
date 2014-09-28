@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-12">
+      <p class="centered-content">
+        <!-- FIXME: Links in p tags need to inherit p's font-family -->
+        Need an account? <a href="/dash/authenticate">Get one here.</a>
+      </p>
+      <form id="signup" class="auth" method="post" action="/dash/authenticate">
+        <label>
+          <input type="text" name="username" placeholder="Username" required />
+        </label>
+        <label>
+          <input type="password" name="password" placeholder="Password" required />
+        </label>
+
+        {{{csrf_tag}}}
+        <button type="submit">Log in</button>
+      </form>
+    </div>
+  </div>
+</div>

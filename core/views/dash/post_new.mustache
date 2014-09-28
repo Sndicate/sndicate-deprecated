@@ -1,0 +1,30 @@
+<div class="container">
+  <form class="editor" method="post" action="/posts/create">
+    <section class="row">
+      <div class="col-12">
+        <label>
+          <input type="text" name="title" placeholder="title" />
+        </label>
+      </div>
+    </section>
+
+    <section class="row">
+      <div class="col-8">
+        <textarea id="wreditor" name="content" required></textarea>
+      </div>
+      <div class="col-4">
+        <label>
+          <select name="status">
+            <option>Status</option>
+            <option value="published">Publish</option>
+            <option value="draft">Draft</option>
+          </select>
+        </label>
+        <label>
+          <input type="text" name="slug" placeholder="custom-slug" />
+        </label>
+        <button type="submit">Publish</button>
+      </div>
+    </section>
+  </form>
+</div>

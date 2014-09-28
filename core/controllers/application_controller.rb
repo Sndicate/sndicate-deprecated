@@ -42,7 +42,7 @@ class ApplicationController < Sinatra::Base
     # TODO: Find a way to return all repeated queries at once (before filter?)
     # NOTE: This can be solved with a filter OR a private method - depends on how many routes use it
     @posts = Post.all # TODO: Limit and paginate
-    @author = Author.where(role: 'owner')
+    @author = Author.where(role: 'owner').first
     @categories = Category.all # TODO: Does this need a limit?
     @pages = Page.all
     mustache :index
