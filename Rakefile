@@ -90,6 +90,16 @@ namespace :dev do
       puts 'It exists!'
     end
   end
+
+  desc "Install built dashboard"
+  task :build, [:subject, :skip_build] do
+    # Build and install dashboard or theme
+    # :subject refers to what is built, :skip_build
+    # refers to the option to skip the build step and
+    # only install.
+    # cp -R dash/ ../../../sndicate/public/dash
+    # cp *.mustache ../../../sndicate/core/views/dash/
+  end
 end
 
 # Test the app
