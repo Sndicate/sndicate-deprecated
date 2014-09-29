@@ -32,6 +32,9 @@ gem 'rack_csrf', '~> 2.5.0', require: 'rack/csrf'
 # We use Mustache templates for most views
 gem 'mustache', '~> 0.99.6'
 
+# Redcarpet parses the Markdown flowing through the app
+gem 'redcarpet', '~> 3.1.2'
+
 # Gems used in development only
 group :development do
   gem 'thin', '~> 1.6.2'
