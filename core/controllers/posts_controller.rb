@@ -32,7 +32,12 @@ class PostsController < ApplicationController
 
   # GET /posts/
   # Show all posts
-  get '/?' do
-    'Posts controller'
+  get '/:slug/?' do |slug|
+    @post = Post.where(slug: slug).first
+
+    unless @post.nil?
+      @author = Author.where(role: 'owner').first
+      mustache :single
+    end
   end
 end
