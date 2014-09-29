@@ -7,11 +7,11 @@
       {{#.}}
         <article class="entry">
           <a href="{{slug}}"><h2>{{title}}</h2></a>
-          <time datetime="{{published_on}}">First published {{published_on}}.</time> {{#last_updated}}<time datetime="{{last_updated}}">Updated {{last_updated}}</time>{{/last_updated}}
+          <time datetime="{{published_on}}">First published {{#pubdate}}{{published_on}}{{/pubdate}} by {{post_author}}.</time> {{#last_updated}}<time datetime="{{last_updated}}">Updated {{last_updated}}</time>{{/last_updated}}
           <p>
             {{{content}}}
           </p>
-          <a class="button" href="{{slug}}">Full Article &raquo;</a>
+          <a class="button" href="/{{prefix}}/{{slug}}">Full Article &raquo;</a>
         </article>
         {{/.}}
       {{/posts}}

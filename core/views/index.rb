@@ -8,9 +8,10 @@ class Index < Layout
         {
           id: post.id,
           title: post.title, 
-          content: post.content,
+          content: MDParser.render(post.content),
           slug: post.slug, 
           author: post.author_id,
+          post_author: post_author(post.author),
           published_on: post.published_on, 
           last_updated: post.last_updated, 
           excerpt: excerpt(post.content)
@@ -19,15 +20,21 @@ class Index < Layout
     end
   end
 
+  def pubdate(published_on)
+    pubdate = Date.parse(render(published_on))
+    pubdate.strftime("First published %B %-d %Y")
+    #published_on || '2014-09-15 08:14:51 -0500'
+  end
+
+  def post_author(author_id)
+    author_id.display_name || author_id.username
+  end
+
+  def prefix
+    SndConfig.posts_prefix
+  end
+
   def author
-    # unless @author.empty?
-    #   @author.map do |author|
-    #     {
-    #       bio: author.bio,
-    #       name: preferred_name(author.username, author.display_name)
-    #     }
-    #   end
-    # end
     @author.values
   end
 

@@ -25,7 +25,9 @@ class Layout < Mustache
   end
 
   def pages
-    @pages.map { |page| { title: page.title, slug: page.slug } }
+    unless @pages.empty?
+      @pages.map { |page| { title: page.title, slug: page.slug } }
+    end
   end
 
   def copyright
