@@ -15,4 +15,6 @@ full_config = YAML.load_file("./#{config_file}") || {}
 env_config  = full_config[ENV['RACK_ENV']] || {}
 SndConfig   = OpenStruct.new(env_config)
 
+MDParser = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true, no_intra_emphasis: true, fenced_code_blocks: true, disable_indented_code_blocks: true)
+
 require "#{SndRoot}/core/config/database"
