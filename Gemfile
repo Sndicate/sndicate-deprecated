@@ -2,9 +2,9 @@ source 'https://rubygems.org'
 
 # Sinatra is the heart of Sndicate
 # We include sinatra-contrib for help with serving JSON, dealing with
-# Cookies and to have some more options available just in case.
+# cookies and to have some more options available just in case.
 gem 'sinatra', '~> 1.4.5', require: 'sinatra/base'
-gem 'sinatra-contrib', '~> 1.4.2'
+gem 'sinatra-contrib', '~> 1.4.2', require: ['sinatra/json', 'sinatra/cookies', 'sinatra/namespace']
 gem 'sinatra-flash', '~> 0.3.0', require: 'sinatra/flash'
 
 # JSON gem makes Sinatra::JSON serve better JSON
@@ -30,7 +30,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'rack_csrf', '~> 2.5.0', require: 'rack/csrf'
 
 # We use Mustache templates for most views
-gem 'mustache', '~> 0.99.6'
+gem 'mustache', '~> 0.99.6', require: 'mustache/sinatra'
 
 # Redcarpet parses the Markdown flowing through the app
 gem 'redcarpet', '~> 3.1.2'

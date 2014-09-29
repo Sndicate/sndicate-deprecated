@@ -1,14 +1,14 @@
-require 'bcrypt' # TODO: Does this line need to be here since we use Bundler.require?
-require 'sinatra/json'
-require 'sinatra/cookies'
-require 'mustache/sinatra'
+#require 'bcrypt' # TODO: Does this line need to be here since we use Bundler.require?
+# require 'sinatra/json'
+# require 'sinatra/cookies'
+# require 'mustache/sinatra'
 # require 'sinatra/auth'
 # require 'sinatra/contact'
 # require 'sinatra/flash'
 # require 'asset-handler'
 
 class ApplicationController < Sinatra::Base
-  register Mustache::Sinatra
+  register Mustache::Sinatra, Sinatra::Namespace
   require './core/views/layout' # Loads the default layout
 
   enable :sessions, :logging
@@ -28,15 +28,15 @@ class ApplicationController < Sinatra::Base
     session[:setup] = true
   end
 
+  before '*' do
+    @pages = Page.all
+  end
+
   # GET /snd-setup
   # Display form to register site owner
   get '/snd-setup/?' do
     mustache :setup, layout: :setup_layout
   end
-
-  # get '/*/?' do |s|
-  #   # TODO: Decide whether we want to prefix posts path
-  # end
   
   get '/' do
     # TODO: Find a way to return all repeated queries at once (before filter?)
