@@ -1,7 +1,7 @@
 language: ruby
 cache: bundler
 
-before_script: rake db:create
+before_script: rake db:create RACK_ENV=test
 
 rvm:
     - 1.9.3

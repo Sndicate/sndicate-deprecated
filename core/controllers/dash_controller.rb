@@ -11,6 +11,12 @@ class DashController < ApplicationController
     redirect '/dash/login' unless session[:user]
   end
 
+  ['/login/?', '/register/?'].each do |route|
+    before route do
+      redirect '/dash' if session[:user]
+    end
+  end
+
   # GET /dash
   # Show the main dashboard page
   # or redirect to login.
@@ -50,6 +56,6 @@ class DashController < ApplicationController
   # Log out
   get '/logout' do
     session[:user] = nil
-    'You are logged out'
+    redirect '/'
   end
 end
