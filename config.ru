@@ -19,4 +19,5 @@ Dir.glob('./core/controllers/*.rb').each do |file|
   map("/#{controller_name}") { run eval("#{controller_name.capitalize}Controller") } unless controller_name == 'application'
 end
 
+map("/#{SndConfig.posts_prefix}") { run PostsController }
 map('/') { run ApplicationController }
