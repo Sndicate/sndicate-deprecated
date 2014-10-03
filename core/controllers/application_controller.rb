@@ -1,21 +1,12 @@
-#require 'bcrypt' # TODO: Does this line need to be here since we use Bundler.require?
-# require 'sinatra/json'
-# require 'sinatra/cookies'
-# require 'mustache/sinatra'
-# require 'sinatra/auth'
-# require 'sinatra/contact'
-# require 'sinatra/flash'
-# require 'asset-handler'
-
 class ApplicationController < Sinatra::Base
-  register Mustache::Sinatra, Sinatra::Namespace
   require './core/views/layout' # Loads the default layout
+  
+  register Sinatra::Flash, Mustache::Sinatra
 
   enable :sessions, :logging
   use Rack::Csrf, raise: true
 
-  set :public_folder, "#{SndRoot}/public"
-  set :views, "#{SndRoot}/core/views"
+  set public_folder: "#{SndRoot}/public", views: "#{SndRoot}/core/views"
   set :mustache, {
     views: "#{SndRoot}/core/views",
     templates: "#{SndRoot}/core/views"
