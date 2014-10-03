@@ -1,10 +1,11 @@
 <div class="row">
     <div class="col-12">
       <p class="centered-content">
+      {{notice}}
         <!-- FIXME: Links in p tags need to inherit p's font-family -->
-        Need an account? <a href="/dash/authenticate">Get one here.</a>
+        Need an account? <a href="/dash/register">Get one here.</a>
       </p>
-      <form id="signup" class="auth" method="post" action="/dash/authenticate">
+      <form id="signup" class="auth" method="post" action="/dash/login">
         <label>
           <input type="text" name="username" placeholder="Username" required />
         </label>
