@@ -20,7 +20,13 @@ module Sinatra
     #     #=> "yesterday"
     #
     # All credit goes to Rails. This is ripped verbatim from
-    # Active Support.
+    # Active Support. You need a time object converted to an
+    # integer for this to work properly.
+    #
+    # @param from_time [Integer] - A time as # of seconds since epoch
+    # @param to_time [Integer] - A time as # of seconds to compare to
+    # @param include_seconds [Boolean] - Compare down to the second?
+    # @return [String] - A human readable relative time (see example)
     def relative_time(from_time, to_time = Time.now.to_i, include_seconds = false)
       distance_in_minutes = (((to_time - from_time).abs)/60).round
       distance_in_seconds = ((to_time - from_time).abs).round
@@ -47,6 +53,19 @@ module Sinatra
         when 525961..1051920    then 'about 1 year ago'
         else "over #{(distance_in_minutes / 525600).round} years ago"
       end
+    end
+
+    # Date to Time
+    #
+    # Converts a date object to a time object. Because
+    # the `relative_time` methods requires the time 
+    # passed to it to be a time object, we define this
+    # method as a helper for the relative_time helper.
+    #
+    # @param date [Date] - Any Date object to convert
+    # @return [Time] - Time as the number of seconds since epoch
+    def date_to_time(date)
+      Time.parse(DateTime.parse(date.to_s).to_s).to_i
     end
   end
 end
