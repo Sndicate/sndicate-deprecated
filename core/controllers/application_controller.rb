@@ -5,6 +5,7 @@ class ApplicationController < Sinatra::Base
 
   enable :sessions, :logging
   use Rack::Csrf, raise: true
+  # use SndAnalytics # Not ready for primetime yet
 
   set public_folder: "#{SndRoot}/public", views: "#{SndRoot}/core/views"
   set :mustache, {

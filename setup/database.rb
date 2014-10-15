@@ -1,7 +1,8 @@
 # Database Schema
 #
 # This file defines the default schema used for
-# Sndicate's database. If you need to alter any
+# Sndicate's database. If you need to alter this
+# for use in a plugin or 
 require 'sequel'
 
 class Database
