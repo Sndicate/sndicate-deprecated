@@ -2,6 +2,10 @@
 
 > If you only blog then it's only a blog... Be an author. Run a syndication hub. Do both with Sndicate.
 
+## DEPRECATION NOTICE
+
+This repository holds the code for the original Sndicate project. This project has now been deprecated. We have moved to Node.js and the project's priorities and goals have shifted. This repo is here for posterity only. Feel free to use it as the base for a Ruby blog engine. We won't be updating this anymore. See [the new Official Sndicate project](https://github.com/Sndicate/sndicate) for the latest code.
+
 __Note:__ Don't try to run pre-0.1.x versions expecting them to function sanely. They're development-only pre-releases. They won't break your computer but that's about all the guarantees you'll get.
 
 Sndicate is a publishing engine (blog/CMS) built on the concepts set forth in the [Sndicate Spec](http://sndicate.org/TODO) (TODO: Publish spec).
